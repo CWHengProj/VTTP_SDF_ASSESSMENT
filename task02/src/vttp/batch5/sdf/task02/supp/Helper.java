@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Helper {
     public int turnCount=0;
@@ -167,7 +165,6 @@ public class Helper {
     public void simulateMoves(char[][] gameGrid) {
         char[][] simGrid = gameGrid;
         //for each empty cell, try and check the win state.
-        //TODO add each state to a list where it can be returned
         for (int i=0;i<3;i++){
             for (int j=0; j<3; j++){
                 if(simGrid[i][j]=='.'){
