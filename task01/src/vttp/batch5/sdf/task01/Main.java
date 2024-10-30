@@ -27,15 +27,8 @@ public class Main {
 			//season,mnth,holiday,weekday,weathersit,temp,hum,windspeed,casual,registered
 			//total is sum of registered and casual riders
 			//position season day month total weathersit holiday
-			//if sunday, will have error in utilities. use this to bypass
-			String dayofWeek;
-			if (Integer.parseInt(tempList[3])==0){
-				dayofWeek= "Sunday";
-			}
-			else{
-				dayofWeek= Utilities.toWeekday(Integer.parseInt(tempList[3]));
-			}
-			unfilteredList.add(new Items(Utilities.toSeason(Integer.parseInt(tempList[0])), dayofWeek, Utilities.toMonth(Integer.parseInt(tempList[1])), (Integer.parseInt(tempList[8])+Integer.parseInt(tempList[9])),getWeatherSit(Integer.parseInt(tempList[4])), Integer.parseInt(tempList[2])));
+			//if sunday, will have error in utilities. add 1 to compensate.
+			unfilteredList.add(new Items(Utilities.toSeason(Integer.parseInt(tempList[0])), Utilities.toWeekday(Integer.parseInt(tempList[3])+1), Utilities.toMonth(Integer.parseInt(tempList[1])), (Integer.parseInt(tempList[8])+Integer.parseInt(tempList[9])),getWeatherSit(Integer.parseInt(tempList[4])), Integer.parseInt(tempList[2])));
 		}
 		br.close();
 		//turn list into a stream, filter and sort and collect into a usable output
