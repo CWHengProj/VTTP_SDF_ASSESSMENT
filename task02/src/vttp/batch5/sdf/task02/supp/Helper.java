@@ -2,6 +2,7 @@ package vttp.batch5.sdf.task02.supp;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -11,25 +12,33 @@ public class Helper {
 		System.out.println("Board:");
 		//read the text files
 		//make the data usable
-		File file = new File(fileDir);
-		FileReader fr = new FileReader(file);
-		BufferedReader br = new BufferedReader(fr);
-		//print out the TTT board
-		String currLine ="";
-        char[][] gameGrid = new char[3][3];
-        for (int row =0; row<3; row++){
-            currLine=br.readLine();
-            char[] c =currLine.toCharArray();
-            for (int col=0;col<3;col++){
-                System.out.print(c[col]);
-                gameGrid[row][col]= c[col];
-            }
-            System.out.println();
-        }
+        try{
 
-		br.close();
-		System.out.println("--------------------------------\n");
-        return gameGrid;
+            File file = new File(fileDir);
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            //print out the TTT board
+            String currLine ="";
+            char[][] gameGrid = new char[3][3];
+            for (int row =0; row<3; row++){
+                currLine=br.readLine();
+                char[] c =currLine.toCharArray();
+                for (int col=0;col<3;col++){
+                    System.out.print(c[col]);
+                    gameGrid[row][col]= c[col];
+                }
+                System.out.println();
+            }
+            
+            br.close();
+            System.out.println("--------------------------------\n");
+            return gameGrid;
+        }
+        catch (FileNotFoundException e){
+            System.err.println("Error. Please enter an appropriate file path. Exiting....\n"+ e.getMessage());
+        }
+        char[][] badGrid = new char[3][3];
+        return badGrid;//just to satisfy returning
     }
     public int scoreChecker(char[][] gameGrid) {
         //check if player won
