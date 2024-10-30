@@ -28,7 +28,7 @@ public class Main {
 			//total is sum of registered and casual riders
 			//position season day month total weathersit holiday
 			//if sunday, will have error in utilities. add 1 to compensate.
-			unfilteredList.add(new Items(Utilities.toSeason(Integer.parseInt(tempList[0])), Utilities.toWeekday(Integer.parseInt(tempList[3])+1), Utilities.toMonth(Integer.parseInt(tempList[1])), (Integer.parseInt(tempList[8])+Integer.parseInt(tempList[9])),getWeatherSit(Integer.parseInt(tempList[4])), Integer.parseInt(tempList[2])));
+			unfilteredList.add(new Items(Utilities.toSeason(Integer.parseInt(tempList[0])), toWeekday(Integer.parseInt(tempList[3])), Utilities.toMonth(Integer.parseInt(tempList[1])), (Integer.parseInt(tempList[8])+Integer.parseInt(tempList[9])),getWeatherSit(Integer.parseInt(tempList[4])), Integer.parseInt(tempList[2])));
 		}
 		br.close();
 		//turn list into a stream, filter and sort and collect into a usable output
@@ -43,6 +43,22 @@ public class Main {
 		
 
 	}
+	public static final String[] DAY = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+	public static String toWeekday(int weekday) {
+		switch (weekday) {
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+				return DAY[weekday];
+			default:
+				return "incorrect day";
+		}
+	}
+
 	public static String getPosition(int count) {
 		String[] POSITION = { "The highest", "The second highest", "The third highest", "The fourth highest", "The fifth highest" };
         switch (count) {
