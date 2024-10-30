@@ -55,8 +55,8 @@ public class Items {
     }
     @Override
     public String toString() {
-        return " recorded number of cyclists was in " + getSeason() +", on a "+getWeekday()+ " in the month of "+ getMonth()+". There were a total of "+total +
-        " cyclists. The weather was "+ getWeatherSit()+". "+getWeekday() + " was "+ getIsHoliday();
+        return " (position) recorded number of cyclists was in " + getSeason() +" (season), on a "+getWeekday()+ " (day) in the month of "+ getMonth()+" (month) .\nThere were a total of "+total +
+        " (total) cyclists. The weather was "+ getWeatherSit()+" (weather) .\n"+getWeekday() + " (day) was "+ getIsHoliday();
         /*The <position> recorded number of cyclists was in
 		<season>, on a <day> in the month of <month>. There were a total of <total> cyclists. 
 		The weather was <weather>. <day> was <holiday>*/
