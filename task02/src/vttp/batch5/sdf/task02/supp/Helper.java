@@ -59,64 +59,106 @@ public class Helper {
             }
         } 
         //cases where O wins in a move turn
-        char[][] tempGrid = gameGrid;
-
         //check through all the win conditions again and return 0
-        for (int l=0; l<3; l++){
-            int oCount =0;
-            if (tempGrid[l][0]=='O'){
+        //horizontal, vertical, diagonal checks if the current state contains more than 2 Os and a space
+        int dotCount =0;
+        int oCount =0;
+        for (int hor=0;hor<3;hor++){
+            dotCount=0;
+            oCount=0;
+            if(gameGrid[hor][0]=='.'){
+                dotCount++;
+            }
+            if(gameGrid[hor][1]=='.'){
+                dotCount++;
+            }
+            if(gameGrid[hor][2]=='.'){
+                dotCount++;
+            }
+            if(gameGrid[hor][0]=='O'){
                 oCount++;
             }
-            if (tempGrid[l][1]=='O'){
+            if(gameGrid[hor][1]=='O'){
                 oCount++;
             }
-            if (tempGrid[l][2]=='O'){
+            if(gameGrid[hor][2]=='O'){
                 oCount++;
             }
-            if (oCount>1){
+            if ((oCount==2)&&(dotCount==1)){
                 return -1;
             }
         }
-        for (int k=0; k<3; k++){
-            int oCount=0;
-            if (tempGrid[0][k]=='O'){
+        dotCount=0;
+        oCount=0;
+        for (int ver=0;ver<3;ver++){
+            dotCount=0;
+            oCount=0;
+            if(gameGrid[0][ver]=='.'){
+                dotCount++;
+            }
+            if(gameGrid[1][ver]=='.'){
+                dotCount++;
+            }
+            if(gameGrid[2][ver]=='.'){
+                dotCount++;
+            }
+            if(gameGrid[0][ver]=='O'){
                 oCount++;
             }
-            if (tempGrid[1][k]=='O'){
+            if(gameGrid[1][ver]=='O'){
                 oCount++;
             }
-            if (tempGrid[2][k]=='O'){
+            if(gameGrid[2][ver]=='O'){
                 oCount++;
             }
-            if (oCount>1){
+            if ((oCount==2)&&(dotCount==1)){
                 return -1;
             }
-
         }
-        int dCount=0;
-        if (tempGrid[0][0]=='O'){
-            dCount++;
+        dotCount=0;
+        oCount=0;
+        if (gameGrid[0][0]=='.'){
+            dotCount++;
         }
-        if (tempGrid[1][1]=='O'){
-            dCount++;
+        if (gameGrid[1][1]=='.'){
+            dotCount++;
         }
-        if (tempGrid[2][2]=='O'){
-            dCount++;
+        if (gameGrid[2][2]=='.'){
+            dotCount++;
         }
-        if (dCount>1){
+        if (gameGrid[0][0]=='O'){
+            oCount++;
+        }
+        if (gameGrid[1][1]=='O'){
+            oCount++;
+        }
+        if (gameGrid[2][2]=='O'){
+            oCount++;
+        }
+        if ((oCount==2)&&(dotCount==1)){
             return -1;
         }
-        dCount=0;
-        if (tempGrid[0][2]=='O'){
-            dCount++;
+        dotCount=0;
+        oCount=0;
+        if (gameGrid[0][2]=='.'){
+            dotCount++;
         }
-        if (tempGrid[1][1]=='O'){
-            dCount++;
+        if (gameGrid[1][1]=='.'){
+            dotCount++;
         }
-        if (tempGrid[2][0]=='O'){
-            dCount++;
+        if (gameGrid[2][0]=='.'){
+            dotCount++;
         }
-        if (dCount>1){
+        if (gameGrid[0][2]=='O'){
+            oCount++;
+        }
+        if (gameGrid[1][1]=='O'){
+            oCount++;
+        }
+        if (gameGrid[2][0]=='O'){
+            oCount++;
+        }
+        if ((oCount==2)&&(dotCount==1)){
             return -1;
         }
         return 0;
@@ -131,8 +173,8 @@ public class Helper {
                 if(simGrid[i][j]=='.'){
                     simGrid[i][j]= 'X';
                     //simulate each position and map to a list the returned score
-                    System.out.printf("y=%d, ",j);
-                    System.out.printf("x=%d, ",i);
+                    System.out.printf("y=%d, ",i);
+                    System.out.printf("x=%d, ",j);
                     int returnedValue = scoreChecker(simGrid);
                     System.out.printf("utility=%d\n",returnedValue);
                     simGrid[i][j]='.';//undo board state
