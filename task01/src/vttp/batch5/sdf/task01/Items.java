@@ -48,10 +48,10 @@ public class Items {
     }
     public String getIsHoliday() {
         if (isHoliday==0){
-            return "a holiday.";
+            return "a holiday.\n";
         }
         else
-            return "not a holiday.";
+            return "not a holiday.\n";
     }
     @Override
     public String toString() {
