@@ -15,7 +15,7 @@ public class Main {
 		//sort by position from highest to lowest based on the number of cyclists.
 		//return the rest of the information
 		String currLine;
-		String fileDir = "C:\\Users\\Admin\\Desktop\\vttp_b5_assessment_template\\task01\\day.csv";//TODO change to relative path
+		String fileDir = ".\\task01\\day.csv";
 		File file = new File(fileDir);
 		FileReader fr = new FileReader(file);
 		BufferedReader br = new BufferedReader(fr);

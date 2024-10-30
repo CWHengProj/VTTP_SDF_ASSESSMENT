@@ -22,7 +22,7 @@ public class Items {
     public void setSeason(String season) {
         this.season = season;
     }
-    public String getWeekday() {//TODO check if correct day of the week
+    public String getWeekday() {
         return weekday;
     }
     public void setWeekday(String weekday) {
@@ -56,7 +56,7 @@ public class Items {
     @Override
     public String toString() {
         return " recorded number of cyclists was in " + getSeason() +", on a "+getWeekday()+ " in the month of "+ getMonth()+". There were a total of "+total +
-        " cyclists. The weather was "+ getWeatherSit()+". "+getWeekday() + " was "+ getIsHoliday(); //TODO change total to string
+        " cyclists. The weather was "+ getWeatherSit()+". "+getWeekday() + " was "+ getIsHoliday();
         /*The <position> recorded number of cyclists was in
 		<season>, on a <day> in the month of <month>. There were a total of <total> cyclists. 
 		The weather was <weather>. <day> was <holiday>*/
